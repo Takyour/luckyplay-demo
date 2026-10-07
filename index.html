@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>LuckyPlay — Demo</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <header class="topbar">
+    <div class="brand">🎰 <span>LuckyPlay</span></div>
+    <div class="coin">🪙 <b id="coinBalance">0</b></div>
+  </header>
+
+  <main>
+    <section id="authView" class="view">
+      <div class="auth-card">
+        <div class="logo-big">🎰</div>
+        <h1>LuckyPlay</h1>
+        <p class="muted">Virtual-coins gaming demo</p>
+        <div class="tabs">
+          <button class="tab active" data-auth="login">Login</button>
+          <button class="tab" data-auth="register">Register</button>
+        </div>
+        <form id="authForm">
+          <input id="nameInput" class="optional" placeholder="Your name" autocomplete="name">
+          <input id="emailInput" type="email" placeholder="Email" required autocomplete="email">
+          <input id="passwordInput" type="password" placeholder="Password (6+ chars)" required minlength="6" autocomplete="current-password">
+          <button class="primary" id="authSubmit">Login</button>
+        </form>
+        <p id="authMsg" class="msg"></p>
+      </div>
+    </section>
+
+    <section id="homeView" class="view hidden">
+      <div class="hero">
+        <div>
+          <small>WELCOME BACK</small>
+          <h2>Play. Collect. Compete.</h2>
+          <p>All rewards are virtual demo coins.</p>
+        </div>
+        <div class="hero-icon">✨</div>
+      </div>
+
+      <div class="section-head"><h2>Games</h2><span class="muted">Animated demos</span></div>
+      <div class="game-grid">
+        <button class="game-card" data-game="Lucky Spin">
+          <div class="game-art spin-art">🎡</div><b>Lucky Spin</b><small>10 coins / round</small>
+        </button>
+        <button class="game-card" data-game="Dice Dash">
+          <div class="game-art dice-art">🎲</div><b>Dice Dash</b><small>10 coins / round</small>
+        </button>
+        <button class="game-card" data-game="Card Flip">
+          <div class="game-art card-art">🃏</div><b>Card Flip</b><small>10 coins / round</small>
+        </button>
+        <button class="game-card" data-game="Gem Match">
+          <div class="game-art gem-art">💎</div><b>Gem Match</b><small>10 coins / round</small>
+        </button>
+      </div>
+
+      <div class="section-head"><h2>Leaderboard</h2><button class="linkbtn" data-view="leaderboard">See all</button></div>
+      <div id="miniLeaderboard" class="list"></div>
+    </section>
+
+    <section id="leaderboardView" class="view hidden">
+      <div class="page-title"><h2>🏆 Leaderboard</h2><p class="muted">Top virtual-coin scores</p></div>
+      <div id="leaderboardList" class="list"></div>
+    </section>
+
+    <section id="profileView" class="view hidden">
+      <div class="profile-card">
+        <div id="avatar" class="avatar">U</div>
+        <h2 id="profileName">User</h2>
+        <p id="profileEmail" class="muted"></p>
+        <div class="stats">
+          <div><b id="profileCoins">0</b><span>Coins</span></div>
+          <div><b id="profileWins">0</b><span>Wins</span></div>
+          <div><b id="profileRounds">0</b><span>Rounds</span></div>
+        </div>
+      </div>
+      <div class="panel">
+        <h3>Profile</h3>
+        <input id="profileNameInput" placeholder="Display name">
+        <button id="saveProfile" class="primary">Save profile</button>
+        <button id="logoutBtn" class="danger">Logout</button>
+      </div>
+    </section>
+
+    <section id="adminView" class="view hidden">
+      <div class="page-title"><h2>🛠 Admin Panel</h2><p class="muted">Demo admin tools</p></div>
+      <div class="admin-grid">
+        <div class="statbox"><b id="adminUsers">0</b><span>Users</span></div>
+        <div class="statbox"><b id="adminCoins">0</b><span>Total coins</span></div>
+        <div class="statbox"><b id="adminRounds">0</b><span>Rounds</span></div>
+      </div>
+      <div class="panel">
+        <h3>Recent users</h3>
+        <div id="adminUsersList" class="list"></div>
+      </div>
+      <p class="muted tiny">Admin access is controlled by the Firestore role field. Do not rely on this UI for security.</p>
+    </section>
+  </main>
+
+  <nav id="bottomNav" class="bottom-nav hidden">
+    <button data-view="home">🏠<span>Home</span></button>
+    <button data-view="leaderboard">🏆<span>Ranks</span></button>
+    <button data-view="profile">👤<span>Profile</span></button>
+    <button id="adminNav" data-view="admin" class="hidden">🛠<span>Admin</span></button>
+  </nav>
+</div>
+
+<div id="gameModal" class="modal hidden">
+  <div class="modal-card">
+    <button class="close" id="closeGame">×</button>
+    <h2 id="gameTitle">Game</h2>
+    <div id="gameAnimation" class="game-animation">🎰</div>
+    <p id="gameStatus" class="muted">Ready?</p>
+    <button id="playRound" class="primary">Play — 10 coins</button>
+  </div>
+</div>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
